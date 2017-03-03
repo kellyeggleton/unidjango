@@ -4,18 +4,16 @@
 <head>
 
 <header class="main-header" role="banner">
-  <img src="/static/mybannerimage.jpg" alt="Banner Image"style="display: block" width="100%"/>
+  <img src="/static/mybannerimage.jpg" alt="Banner Image" style="display: block" width="100%"/>
 </header>
 
 <!-- creates the navigation bar at the top of page -->
 <ul class="topnav" id="myTopnav">
   <li><a href="/">Home</a></li>
   <li><a href="upload_file">Upload Files</a></li>
-  <li><a href="addvar">Add New Variant</a></li>
   <li><a href="variants">Variants</a></li>
   <li><a href="search">Search Variants</a></li>	
-  <li><a href="contact">Contact Us</a></li>	
-
+  <li><a href="contact">Contact Us</a></li>
   
     <a href="javascript:void(0);" onclick="myFunction()"></a>
   </li>
@@ -63,42 +61,60 @@ ul.topnav li.icon {display: none;}
  </script>
 </ul>
 
-<link rel="stylesheet" href="{% static 'css/my_css.css' %}">   
+<link rel="stylesheet" href="{% static 'css/my_css.css' %}">
 
 
-   <title>Variant Database</title>
 
-<center>
-<body>
-<br>
+      <form id="searchform" method="get" accept-charset="utf-8" type="get" action="" style="margin: 0">
+	<input  id="search_box" type="text" name="search_box"  placeholder="Search..." >
+	<input class="btn" type="submit">
+      
+        <i class="fa fa-search"></i> 
+	        
+    </form>
+
+	
 
 
-</br>
-Please feel free contact us should you have any complaints or queries regarding troubleshooting, auditing or any other questions you may have using the form below.
-
-<br>
 
 
-</br>
+{% if variants %}
 
-	<form id="contact_form" action="#" method="POST" enctype="multipart/form-data">
-		<div class="row">
-			<label for="name">Your Name</label><br />
-			<input id="name" class="input" name="name" type="text" value="" size="30" /><br />
-		</div>
-		<div class="row">
-			<label for="email">Your E-mail</label><br />
-			<input id="email" class="input" name="email" type="text" value="" size="30" /><br />
-		</div>
-		<div class="row">
-			<label for="message"> Message </label><br />
-			<textarea id="message" class="input" name="message" rows="7" cols="30"></textarea><br />
-		</div>
-		<input id="submit_button" type="submit" value="Send email" />
-	</form>						
+	    
+	<table>
+   	<tr>
 
-</body>
+	<th>Gene</th>
+	<th>cDNA</th>
+	<th>Protein Change</th>
+	<th>Genomic Change</th>
+	<th>Previous Classification</th>
+	
+   	     
+    	</tr>
+    	<tbody>
+	{% for v in variants %}
+    	<tr>
+	<td>{{ v.GeneName_ID }} &nbsp &nbsp </td>
+        <td>{{ v.Variant_cDNA }}</td>
+        <td>{{ v.Variant_Protein }}</td>
+	<td>{{ v.Variant_Genome }}</td>
+	<td>{{ v.Class_ID }}</td>
+	
+   	</tr>
+	{% endfor %}
+  	<tbody>
+</table>
+	{% endif %}
 
-</center>
+
+
+
+
+
+
+
+
+
 
 

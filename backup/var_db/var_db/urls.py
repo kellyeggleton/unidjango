@@ -24,7 +24,6 @@ urlpatterns = [
     url(r'^variants/', views.variants, name='variants'),
     url(r'^search/', views.search, name='search_variants'),
     url(r'^contact/', views.contact, name='contact'), 
-    url(r'^addvar/', views.addvar, name='addvar'), 
     
 
 ]

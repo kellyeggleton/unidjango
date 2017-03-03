@@ -11,17 +11,12 @@ from .models import Patient_Variant
 from .forms import *
 from django.template import RequestContext
 
-
-
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
 
-
-
 def handle_uploaded_file(f):
 	print 'WAYHEY'
-
 
 
 def upload_file(request):
@@ -38,42 +33,22 @@ def upload_file(request):
         return render(request, 'upload.html', {'form':form})
 	
 
-
-
 def variants(request): 
     variants = Variant_Details.objects.all()
     return render_to_response('variants.html', {'variants':variants})
 
 
-
-
 def search(request):
 	if request.method == 'GET': # If the form is submitted
-		if 'search_box' in request.GET:
-	        	search_query = request.GET.get('search_box')
-			variants = Variant_Details.objects.filter(GeneName_ID__GeneName=search_query)
-		elif 'search_box2' in request.GET:
-			search_query = request.GET.get('search_box2')
-			variants = Variant_Details.objects.filter(Variant_Protein=search_query)
-			print search_query
-		elif 'search_box3' in request.GET:
-			search_query = request.GET.get('search_box3')
-			variants = Variant_Details.objects.filter(Variant_Genome=search_query)
-			print variants
-		else: 
-			variants = None
+	        search_query = request.GET.get('search_box')
+		variants = Variant_Details.objects.filter(GeneName_ID__GeneName=search_query)
    		return render_to_response('search.html', {'variants':variants})
-		
-	
 
-
-
-def addvar (request):
-    return render(request,'addvar.html')		 
-
-
-
-
+'''def search(request):
+	if request.method == 'POST':
+	    form = Variant_DetailsSearchForm(request.POST)
+	    if form.is_valid():
+		return render(request, 'search.html')'''
 
 def contact (request):
     return render(request,'contact.html')

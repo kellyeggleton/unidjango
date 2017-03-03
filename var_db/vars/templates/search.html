@@ -11,6 +11,7 @@
 <ul class="topnav" id="myTopnav">
   <li><a href="/">Home</a></li>
   <li><a href="upload_file">Upload Files</a></li>
+  <li><a href="addvar">Add New Variant</a></li>
   <li><a href="variants">Variants</a></li>
   <li><a href="search">Search Variants</a></li>	
   <li><a href="contact">Contact Us</a></li>
@@ -63,19 +64,22 @@ ul.topnav li.icon {display: none;}
 
 <link rel="stylesheet" href="{% static 'css/my_css.css' %}">
 
-
+<center>
 
       <form id="searchform" method="get" accept-charset="utf-8" type="get" action="" style="margin: 0">
-	<input  id="search_box" type="text" name="search_box"  placeholder="Search..." >
+	<input  id="search_box" type="text" name="search_box"  placeholder="Search by Gene" >
+	Or
+	<input  id="search_box2" type="text" name="search_box2"  placeholder="Search by Protein Change" >
+	Or
+	<input  id="search_box3" type="text" name="search_box3"  placeholder="Search by Genomic Change" >
+
 	<input class="btn" type="submit">
       
         <i class="fa fa-search"></i> 
 	        
-    </form>
+      </form>
 
 	
-
-
 
 
 {% if variants %}
@@ -111,10 +115,6 @@ ul.topnav li.icon {display: none;}
 
 
 
-
-
-
-
-
+</center>
 
 

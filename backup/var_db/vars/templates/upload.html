@@ -3,6 +3,8 @@
 <html>
 <head>
 
+<title>Variant Database</title>
+
 <header class="main-header" role="banner">
   <img src="/static/mybannerimage.jpg" alt="Banner Image" style="display: block" width="100%"/>
 </header>
@@ -10,12 +12,12 @@
 <!-- creates the navigation bar at the top of page -->
 
 <ul class="topnav" id="myTopnav">
-  <li><a href="/">Home</a></li>
+  <li><a href="">Home</a></li>
   <li><a href="upload_file">Upload Files</a></li>
-  <li><a href="addvar">Add New Variant</a></li>
   <li><a href="variants">Variants</a></li>
   <li><a href="search">Search Variants</a></li>	
-  <li><a href="contact">Contact Us</a></li>
+  <li><a href="search">Contact Us</a></li>
+
   
     <a href="javascript:void(0);" onclick="myFunction()"></a>
   </li>
@@ -63,27 +65,28 @@ ul.topnav li.icon {display: none;}
  </script>
 </ul>
 
-<link rel="stylesheet" href="{% static 'css/my_css.css' %}">
+<link rel="stylesheet" href="{% static 'css/my_css.css' %}"> 
+   
 
-   <title>Variant Database</title>
+
 </head>
 	<body>
 	  <h1>
           <center>Welcome to the Keleen Variant Database</center></h1>
 	  <h2><i><center>Providing you with variant information since 2017</center></i></h2>
-          <hr size="10", color="Teal">  
+          <hr size="10", color="Teal"> 
 
-  	<center>
-	&nbsp
-	&nbsp
-
-	&nbsp
-	&nbsp
-
-	<p><img src="/static/bestpurrmaid.jpg" hspace=20><img src="/static/arsenal.jpg"height="280" width="204"></p>
-	</center>
-    	</body>
+ 
+<center><form role='form' method='post' enctype='mutiple/form-data'>
+        {% csrf_token %}
+        {{ form.as_p}}
+        <input type = 'submit' value = 'Upload' /><center>
+        </form>
 
 
 
-</html>
+
+
+
+
+
