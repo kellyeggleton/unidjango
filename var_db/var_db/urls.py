@@ -22,7 +22,11 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^upload_file/', views.upload_file, name='upload_file'),
     url(r'^variants/', views.variants, name='variants'),
-   # url(r'^get_variants/', 'vars.views.get_variants', name='get_variants'),
-    #url(r'^add_variants/', 'vars.views.add_variants', name='add_variants'),
+    url(r'^search/', views.search, name='search_variants'),
+    url(r'^contact/', views.contact, name='contact'), 
+    
 
 ]
+
+
+  

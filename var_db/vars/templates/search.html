@@ -4,7 +4,7 @@
 <head>
 
 <header class="main-header" role="banner">
-  <img src="/static/mybannerimage.jpg" alt="Banner Image"style="display: block" width="100%"/>
+  <img src="/static/mybannerimage.jpg" alt="Banner Image" style="display: block" width="100%"/>
 </header>
 
 <!-- creates the navigation bar at the top of page -->
@@ -13,8 +13,7 @@
   <li><a href="upload_file">Upload Files</a></li>
   <li><a href="variants">Variants</a></li>
   <li><a href="search">Search Variants</a></li>	
-  <li><a href="contact">Contact Us</a></li>	
-
+  <li><a href="contact">Contact Us</a></li>
   
     <a href="javascript:void(0);" onclick="myFunction()"></a>
   </li>
@@ -62,22 +61,26 @@ ul.topnav li.icon {display: none;}
  </script>
 </ul>
 
-<link rel="stylesheet" href="{% static 'css/my_css.css' %}">   
+<link rel="stylesheet" href="{% static 'css/my_css.css' %}">
 
 
-   <title>Variant Database</title>
-</head>
-	<body>
-	  <h1>
-          <center>Welcome to the Keleen Variant Database</center></h1>
-	  <h2><i><center>Providing you with variant information since 2017</center></i></h2>
-          <hr size="10", color="Teal">  
+
+      <form id="searchform" method="get" accept-charset="utf-8" type="get" action="" style="margin: 0">
+	<input  id="search_box" type="text" name="search_box"  placeholder="Search..." >
+	<input class="btn" type="submit">
+      
+        <i class="fa fa-search"></i> 
+	        
+    </form>
+
+	
 
 
-<center><form role='form' method='post' enctype='mutiple/form-data'>
-        {% csrf_token %}
-        {{ form.as_p}}
-        
+
+
+{% if variants %}
+
+	    
 	<table>
    	<tr>
 
@@ -91,7 +94,7 @@ ul.topnav li.icon {display: none;}
     	</tr>
     	<tbody>
 	{% for v in variants %}
-    
+    	<tr>
 	<td>{{ v.GeneName_ID }} &nbsp &nbsp </td>
         <td>{{ v.Variant_cDNA }}</td>
         <td>{{ v.Variant_Protein }}</td>
@@ -99,9 +102,19 @@ ul.topnav li.icon {display: none;}
 	<td>{{ v.Class_ID }}</td>
 	
    	</tr>
-  	{% endfor %}
+	{% endfor %}
   	<tbody>
 </table>
+	{% endif %}
 
 
-        </form>
+
+
+
+
+
+
+
+
+
+

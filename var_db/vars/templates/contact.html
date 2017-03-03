@@ -66,42 +66,37 @@ ul.topnav li.icon {display: none;}
 
 
    <title>Variant Database</title>
-</head>
-	<body>
-	  <h1>
-          <center>Welcome to the Keleen Variant Database</center></h1>
-	  <h2><i><center>Providing you with variant information since 2017</center></i></h2>
-          <hr size="10", color="Teal">  
+
+<body>
+<br>
 
 
-<center><form role='form' method='post' enctype='mutiple/form-data'>
-        {% csrf_token %}
-        {{ form.as_p}}
-        
-	<table>
-   	<tr>
+</br>
+Please feel free contact us should you have any complaints or queries regarding troubleshooting, auditing or any other questions you may have using the form below.
 
-	<th>Gene</th>
-	<th>cDNA</th>
-	<th>Protein Change</th>
-	<th>Genomic Change</th>
-	<th>Previous Classification</th>
-	
-   	     
-    	</tr>
-    	<tbody>
-	{% for v in variants %}
-    
-	<td>{{ v.GeneName_ID }} &nbsp &nbsp </td>
-        <td>{{ v.Variant_cDNA }}</td>
-        <td>{{ v.Variant_Protein }}</td>
-	<td>{{ v.Variant_Genome }}</td>
-	<td>{{ v.Class_ID }}</td>
-	
-   	</tr>
-  	{% endfor %}
-  	<tbody>
-</table>
+<br>
 
 
-        </form>
+</br>
+
+	<form id="contact_form" action="#" method="POST" enctype="multipart/form-data">
+		<div class="row">
+			<label for="name">&nbsp&nbsp&nbsp Your Name</label><br />
+			<input id="name" class="input" name="name" type="text" value="" size="30" /><br />
+		</div>
+		<div class="row">
+			<label for="email">&nbsp&nbsp&nbsp Your E-mail</label><br />
+			<input id="email" class="input" name="email" type="text" value="" size="30" /><br />
+		</div>
+		<div class="row">
+			<label for="message"> &nbsp&nbsp&nbsp Message </label><br />
+			<textarea id="message" class="input" name="message" rows="7" cols="30"></textarea><br />
+		</div>
+		<input id="submit_button" type="submit" value="Send email" />
+	</form>						
+
+</body>
+
+
+
+

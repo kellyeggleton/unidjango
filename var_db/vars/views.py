@@ -9,6 +9,7 @@ from .models import Patient_Details
 from .models import Variant_Details
 from .models import Patient_Variant
 from .forms import *
+from django.template import RequestContext
 
 # Create your views here.
 def home(request):
@@ -37,7 +38,27 @@ def variants(request):
     return render_to_response('variants.html', {'variants':variants})
 
 
-#d#ef get_variants(request):
+def search(request):
+	if request.method == 'GET': # If the form is submitted
+	        search_query = request.GET.get('search_box')
+		variants = Variant_Details.objects.filter(GeneName_ID__GeneName=search_query)
+   		return render_to_response('search.html', {'variants':variants})
+
+'''def search(request):
+	if request.method == 'POST':
+	    form = Variant_DetailsSearchForm(request.POST)
+	    if form.is_valid():
+		return render(request, 'search.html')'''
+
+def contact (request):
+    return render(request,'contact.html')
+
+
+
+
+
+
+#def get_variants(request):
  #   gene = request.GET.get('GeneName')
   #  variants = Variant_Details.objects.filter(genename__genename=gene)
   #  return render (request, 'vars/get_variants.html', {GeneName=gene, Variant_Genome=variants})
